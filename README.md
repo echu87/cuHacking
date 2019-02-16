@@ -1,1 +1,1 @@
-# cuHacking-FantasyLeague
+# cuHacking
