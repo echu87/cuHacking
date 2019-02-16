@@ -28,5 +28,4 @@ def level_to_percentage(level):
     return level_percentages[level]
 
 
-print(suggest_mark(["3+/4-","2+/3-", "3", "1"]))
 
