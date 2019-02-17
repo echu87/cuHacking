@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import Classroom, Task
+from .models import Classroom, Task, Marks
 import random
 
 from django.http import HttpResponseRedirect
