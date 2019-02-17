@@ -7,4 +7,8 @@ from django import forms
 class classroom_creating(forms.ModelForm):
     class Meta:
         model = Classroom
+<<<<<<< HEAD
         exclude = ['code','teacherEmail']
+=======
+        exclude = ['code','teacherEmail','students']
+>>>>>>> origin/matt
