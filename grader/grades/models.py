@@ -12,4 +12,11 @@ class Classroom(models.Model):
 
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")
+<<<<<<< HEAD
     classroom = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null = True)
+=======
+    description = models.TextField(null=True,blank=True,default = 'description')
+    classroom = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null = True)
+    due_date = models.DateField()
+    
+>>>>>>> origin/youssef
