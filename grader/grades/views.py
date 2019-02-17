@@ -47,21 +47,15 @@ def classroom(request):
         return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[],'createdClassesLen':0,'followedClasses':[],'followedClassesLen':0,"cform":cform})
 
 def classroom_detail(request, project_number):
-    context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number))}
-    return render(request,'projects/classroom_detail.html',context) 
+    editing = False
+    if Classroom.objects.filter(id = project_number).get(owner = request.user.email):
+        editing = True
+    context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number)), 'editing':editing}
+    return render(request,'projects/classroom_detail.html', context) 
+
+def delete_class(request,class_id):
+    Classroom.objects.get(id = class_id).delete()
+    return redirect('/classroom')
 
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
-
-# @login_required
-# def join_class(request):
-#     if request.method == 'POST':
-#         for classroom in Classroom.objects.order_by('code'):
-#             if request.POST.getlist('code')[0] == classroom.code:
-#                 newclass = classroom
-#                 newclass.students.add(request.user)
-#                 newclass.save()
-#                 return render(request,'projects/join_class.html',{'msg': "You made it!"})                
-#         return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
-#     else:
-#         return render(request,'projects/join_class.html',{'msg': ""}) 
