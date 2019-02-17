@@ -46,3 +46,4 @@ def join_class(request):
         return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
     else:
         return render(request,'projects/join_class.html',{'msg': ""})
+
