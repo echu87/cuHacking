@@ -145,8 +145,8 @@ SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
 'https://www.googleapis.com/auth/userinfo.email',
 'https://www.googleapis.com/auth/userinfo.profile'
 ]
-LOGIN_URL = 'login'
+LOGIN_URL = 'loggingin'
 LOGIN_REDIRECT_URL = 'projects'
 LOGOUT_REDIRECT_URL = ''
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='125250152016-1qloeposk633vha0602rf1md0s3fbc4p.apps.googleusercontent.com'  #Paste CLient Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JkueAxS9VE0Ll6SfQb7V_mmq' #Paste Secret Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='125250152016-1qloeposk633vha0602rf1md0s3fbc4p.apps.googleusercontent.com'  # Paste CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JkueAxS9VE0Ll6SfQb7V_mmq' # Paste Secret Key
