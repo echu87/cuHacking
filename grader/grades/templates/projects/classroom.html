@@ -13,7 +13,7 @@
 
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/navigation.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/classroom.css' %}" rel="stylesheet">
 
   </head>
 
@@ -22,12 +22,12 @@
     <!-- Top Navigation Bar -->
     <ul id='main' class="navigation">
       <div class="wid">
-        <a href="./"><li class="navigation-item" style="margin-left: 0">Home</li></a>
+        <a href="./"><li class="navigation-item">Home</li></a>
         <a href="./classroom"><li class="navigation-item">Classrooms</li></a>
         {% if first_name %}
-        <a href="./logout"><li class="navigation-item nav-auth-status">Sign Out</li></a>
+        <a href="./logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
         {% else %}
-        <a href="./login"><li class="navigation-item nav-auth-status">Sign In</li></a>
+        <a href="./login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
         {% endif %}
       </div>
     </ul>
@@ -35,21 +35,27 @@
     <!-- Main Display -->
     <div class="wrapper">
       <div class="welcome">
-        {% if first_name %}
-        <div class="header">Hi {{ first_name }}, Welcome To Your Classroom!</div>
-        {% else %}
-        <div class="header">Hi There, Sign In To Get Started...</div>
-        {% endif %}
+        <div class="header">Create A New Classroom Or Join An Existing Classroom...</div>
         <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
           commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        {% if first_name %}
-        <a href="./logout"><div class="button">Sign Out</div></a>
-        {% else %}
-        <a href="./login"><div class="button">Sign In</div></a>
-        {% endif %}
+        <a href=""><div class="button">Create a Classroom</div></a>
+        <a href=""><div class="button">Join a Classroom</div></a>
       </div>
+      <div class="grid-container">
+        <div class="info">
+          <div class="header">Created Classes</div>
+        </div>
+        <div class="info">
+          <div class="header">Joined Classes</div>
+        </div>
+      </div>
+      <form action="classroom" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+      </form>
     </div>
 
   </body>
