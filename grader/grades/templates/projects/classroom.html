@@ -18,7 +18,7 @@
   </head>
 
   <body>
-  
+
     <!-- Top Navigation Bar -->
     <ul id='main' class="navigation">
       <div class="wid">
@@ -34,6 +34,8 @@
 
     <!-- Main Display -->
     <div class="wrapper">
+
+      {% if first_name %}
       <div class="welcome">
         <div class="header">Create A New Classroom Or Join An Existing Classroom...</div>
         <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -51,11 +53,13 @@
           <div class="header">Joined Classes</div>
         </div>
       </div>
-      <form action="classroom" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-      </form>
+      {% else %}
+      <div class="welcome">
+        <div class="header">You Must Be Signed In To Access Classrooms...</div>
+        <div class="description">Sign in by clicking the sign in button in the top navigation bar.</div>
+      </div>
+      {% endif %}
+      
     </div>
 
   </body>
