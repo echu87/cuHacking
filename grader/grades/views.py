@@ -59,7 +59,7 @@ def delete_class(request,class_id):
 
 
 def enroll_class(request,class_id):
-    Classroom.objects.get(id = class_id).students.get(id = request.user.id).delete()
+    Classroom.objects.get(id = class_id).students.remove(request.user)
     return redirect('/classroom')
 
 

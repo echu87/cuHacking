@@ -74,13 +74,8 @@
             <div class="class">
               <div class="subject">{{ class.subject }} ({{ class.code }})</div>
               <div class="desc">{{ class.description }}</div>
-<<<<<<< HEAD
-              <a href="/unenroll/{{class.id}}"><div class="button g-button">Unenroll</div></a>
-              <a href=""><div class="button">View Class</div></a>
-=======
-              <div class="button g-button">Unenroll</div>
+              <a href="/unenroll/{{class.id}}"><button class="button g-button">Unenroll</button></a>
               <a href="/classroom/{{ class.id }}"><div class="button">View Class</div></a>
->>>>>>> origin/matt
             </div>
           {% endfor %}
         </div>
