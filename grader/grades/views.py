@@ -48,7 +48,7 @@ def classroom(request):
 
 def classroom_detail(request, project_number):
     editing = False
-    if Classroom.objects.filter(id = project_number).get(owner = request.user.email):
+    if Classroom.objects.get(id = project_number).owner == request.user:
         editing = True
     context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number)), 'editing':editing}
     return render(request,'projects/classroom_detail.html', context) 
