@@ -12,6 +12,7 @@ class Classroom(models.Model):
     description = models.CharField(max_length = 90, default = "description")
     name = models.CharField(max_length = 90, default = "teacher name")
     subject = models.CharField(max_length = 90, default = "class subject")
+    students = models.ManyToManyField(User)
 
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")

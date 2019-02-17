@@ -2,18 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import Classroom, Task
-<<<<<<< HEAD
-from grades.forms import classroom_creating
-=======
-import random
-
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
->>>>>>> origin/matt
 
+from django.contrib.auth.decorators import login_required
+import random
 from .forms import classroom_creating
 
-# Create your views here.
 def homepage(request):
     return render(request,"projects/main.html",{'msg':Classroom.objects.order_by('id')})
 def classroom(request):
@@ -36,9 +30,19 @@ def classroom_create(request):
     else:
         cform = classroom_creating()
     return render(request,'projects/classroom_create.html',{"cform" : cform}) 
-<<<<<<< HEAD
-=======
 
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
->>>>>>> origin/matt
+
+@login_required
+def join_class(request):
+    if request.method == 'POST':
+        for classroom in Classroom.objects.order_by('code'):
+            if request.POST.getlist('code')[0] == classroom.code:
+                newclass = classroom
+                newclass.students.add(request.user)
+                newclass.save()
+                return render(request,'projects/join_class.html',{'msg': "You made it!"})                
+        return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
+    else:
+        return render(request,'projects/join_class.html',{'msg': ""})
