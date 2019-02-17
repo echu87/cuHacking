@@ -17,7 +17,7 @@ def homepage(request):
         return render(request,"projects/main.html",{'first_name':None})
 
 def classroom(request):
-    if request.method == 'POST' and request.user.is_authenticated:
+    if request.method == 'POST' and request.user.is_authenticated and not request.POST.getlist('code'):
         cform = classroom_creating(request.POST)
         if cform.is_valid():
             new_Classroom = cform.save(commit = False)
@@ -28,15 +28,36 @@ def classroom(request):
     else:
         cform = classroom_creating()
 
+    if request.method == 'POST' and request.user.is_authenticated and request.POST.getlist('code'):
+        for classroom in Classroom.objects.order_by('code'):
+            if request.POST.getlist('code')[0] == classroom.code:
+                newclass = classroom
+                newclass.students.add(request.user)
+                newclass.save()
+
     if request.user.is_authenticated:
-        filtered = Classroom.objects.filter(teacherEmail=request.user.email)
-        return render(request,"projects/classroom.html",{'first_name':request.user.first_name,'createdClasses':filtered,'createdClassesLen':len(filtered),"cform":cform})
+        followedClasses = []
+        for classroom in Classroom.objects.order_by("students") :
+            for student in classroom.students.all():
+                if student.email == request.user.email and not classroom in followedClasses:
+                    followedClasses.append(classroom)
+        filterClasses = Classroom.objects.filter(owner = request.user.email)
+        return render(request,"projects/classroom.html",{'first_name':request.user.first_name,'createdClasses':filterClasses,'createdClassesLen':len(filterClasses),'followedClasses':followedClasses,'followedClassesLen':len(followedClasses),"cform":cform})
     else:
-        return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[],'createdClassesLen':0,"cform":cform})
-
-def classroom_delete(code):
-    Classroom.objects.get(code=code.delete).delete()
+        return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[],'createdClassesLen':0,'followedClasses':[],'followedClassesLen':0,"cform":cform})
     
-
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
+
+# @login_required
+def join_class(request):
+    if request.method == 'POST':
+        for classroom in Classroom.objects.order_by('code'):
+            if request.POST.getlist('code')[0] == classroom.code:
+                newclass = classroom
+                newclass.students.add(request.user)
+                newclass.save()
+                return render(request,'projects/join_class.html',{'msg': "You made it!"})                
+        return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
+    else:
+        return render(request,'projects/join_class.html',{'msg': ""}) 

@@ -8,10 +8,11 @@ from django.dispatch import receiver
 # Create your models here.
 class Classroom(models.Model):
     code = models.CharField(max_length = 90, default = "Code")
-    teacherEmail = models.CharField(max_length = 90, default = "Email")
+    owner = models.CharField(max_length = 90, default = "Email")
     subject = models.CharField(max_length = 90, default = "Enter Subject Here...")
     name = models.CharField(max_length = 90, default = "Enter Name Here...")
     description = models.CharField(max_length = 90, default = "Enter Description Here...")
+    students = models.ManyToManyField(User)
     
 # class Humans(models.Model):
 #     email = models.CharField(max_length = 90, default = "email")
