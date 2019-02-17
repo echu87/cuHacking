@@ -53,6 +53,12 @@ def classroom_detail(request, project_number):
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
 
+def delete_class(request,class_id):
+    Classroom.objects.get(id = class_id).delete()
+    return redirect('/classroom')
+
+
+
 # @login_required
 # def join_class(request):
 #     if request.method == 'POST':
