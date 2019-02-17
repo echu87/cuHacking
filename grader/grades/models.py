@@ -21,5 +21,20 @@ class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")
     classroom = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null = True)
     end_date = models.DateField(null=True,blank=True)
+    Expectation = models.CharField(max_length = 90, default = "Expectation")
     description = models.TextField(null=True,blank=True,default = 'description')
     keywords = models.TextField(null=True,blank=True,default = '')
+
+class Marks (models.Model):
+    MARKS = ( ('R', 'R'),
+    ('-1', '-1'),
+    ('1-/1', '1-/1'),
+    ('1', 'Senior'),
+    )
+    mark = models.CharField(
+        max_length=5,
+        choices=MARKS,
+        default='4',
+    )
+    task = models.ForeignKey(Task,on_delete=models.SET_NULL,null = True)
+    student = models.ForeignKey(User,on_delete=models.SET_NULL,null = True)
