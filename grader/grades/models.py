@@ -7,14 +7,6 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Classroom(models.Model):
-<<<<<<< HEAD
-    code = models.CharField(max_length = 90, default = "class code")
-    teacherEmail = models.CharField(max_length = 90, default = "teacher email")
-    description = models.CharField(max_length = 90, default = "description")
-    name = models.CharField(max_length = 90, default = "teacher name")
-    subject = models.CharField(max_length = 90, default = "class subject")
-    students = models.ManyToManyField(User)
-=======
     code = models.CharField(max_length = 90, default = "Code")
     owner = models.CharField(max_length = 90, default = "Email")
     subject = models.CharField(max_length = 90, default = "Enter Subject Here...")
@@ -24,7 +16,6 @@ class Classroom(models.Model):
     
 # class Humans(models.Model):
 #     email = models.CharField(max_length = 90, default = "email")
->>>>>>> origin/matt
 
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")

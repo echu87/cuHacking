@@ -43,11 +43,7 @@ def classroom(request):
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
 
-<<<<<<< HEAD
-@login_required
-=======
 # @login_required
->>>>>>> origin/matt
 def join_class(request):
     if request.method == 'POST':
         for classroom in Classroom.objects.order_by('code'):
@@ -58,9 +54,8 @@ def join_class(request):
                 return render(request,'projects/join_class.html',{'msg': "You made it!"})                
         return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
     else:
-<<<<<<< HEAD
-        return render(request,'projects/join_class.html',{'msg': ""})
-
-=======
         return render(request,'projects/join_class.html',{'msg': ""}) 
->>>>>>> origin/matt
+
+def coloring (request, project_number):
+    context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number))}
+    return render(request,'projects/coloring.html',context)
