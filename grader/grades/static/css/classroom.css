@@ -36,6 +36,19 @@
     height: 300px;
     border-radius: 5px;
     background: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.info::-webkit-scrollbar {
+    width: 10px;
+}
+.info::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgb(194, 194, 194);
+}
+.info::-webkit-scrollbar-thumb {
+    background: rgb(218, 218, 218); 
+    border-radius: 10px;
 }
 .grid-container {
     display: grid;
@@ -51,4 +64,23 @@
 }
 a {
     text-decoration: none;
+}
+.button-ext {
+    width: 150px;
+}
+
+.class {
+    margin: 20px 0px;
+}
+.subject {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+}
+.desc {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 5px 0px;
+    padding: 0px;
 }

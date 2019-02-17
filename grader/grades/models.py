@@ -7,8 +7,11 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Classroom(models.Model):
-    name = models.CharField(max_length = 90, default = "class name")
-    subject = models.CharField(max_length = 90, default = "class name")
+    code = models.CharField(max_length = 90, default = "class code")
+    teacherEmail = models.CharField(max_length = 90, default = "teacher email")
+    description = models.CharField(max_length = 90, default = "description")
+    name = models.CharField(max_length = 90, default = "teacher name")
+    subject = models.CharField(max_length = 90, default = "class subject")
 
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")
