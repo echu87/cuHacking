@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jexcel/2.0.0/js/jquery.jexcel.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jexcel/2.0.0/css/jquery.jexcel.min.css" type="text/css" />
+
+<div id='my-spreadsheet'></div>
+<script type="text/javascript">
+
+var data = []
+
+var rows = []
+
+$('#my-spreadsheet').jexcel({
+    data:data,
+    colHeaders: ['Expectation','R', '1-', '1-/1','1','1/1+','1+', '2-', '2-/2','2','2/2+','2+','3-', '3-/3','3','3/3+','3+','4-', '4-/4','4','4/4+','4+'],
+    colWidths: [ 120, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,80, 80, 80, 80, 80, 80, 80],
+    rows: rows,
+    
+});
+
+$('#my-spreadsheet').jexcel('updateSettings', {
+    table: function (instance, cell, col, row, val, id) {
+        
+        if (col == 1){
+            $(cell).css('background-color','#F08080' );
+        }
+        if (col == 2){
+            $(cell).css('background-color','#ffa500' );
+        }
+        if (col == 3){
+            $(cell).css('background-color','#ffae19' );
+        }
+        if (col == 4){
+            $(cell).css('background-color','#ffb732' );
+        }
+        if (col == 5){
+            $(cell).css('background-color','#ffc04c' );
+        }
+        if (col == 6){
+            $(cell).css('background-color','#ffc966' );
+        }
+        if (col == 7){
+            $(cell).css('background-color','#ffffb2' );
+        }
+        if (col == 8){
+            $(cell).css('background-color','#FFFF99' );
+        }
+        if (col == 9){
+            $(cell).css('background-color','#fff97f' );
+        }
+        if (col == 10){
+            $(cell).css('background-color','#fff866' );
+        }
+        if (col == 11){
+            $(cell).css('background-color','#fff74c' );
+        }
+        if (col == 12){
+            $(cell).css('background-color','#4ca64c' );
+        }
+        if (col == 13){
+            $(cell).css('background-color','#66b266' );
+        }
+        if (col == 14){
+            $(cell).css('background-color','#7fbf7f' );
+        }
+        if (col == 15){
+            $(cell).css('background-color','#99cc99' );
+        }
+        if (col == 16){
+            $(cell).css('background-color','#b2d8b2' );
+        }
+        if (col == 17){
+            $(cell).css('background-color','#9999ff' );
+        }
+        if (col == 18){
+            $(cell).css('background-color','#7f7fff' );
+        }
+        if (col == 19){
+            $(cell).css('background-color','#6666ff' );
+        }
+        if (col == 20){
+            $(cell).css('background-color','#4c4cff' );
+        }
+        if (col == 21){
+            $(cell).css('background-color','#3232ff' );
+        }
+    }
+});
+</script>
+</html>
