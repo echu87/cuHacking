@@ -23,7 +23,7 @@ class Task(models.Model):
     end_date = models.DateField(null=True,blank=True)
     Expectation = models.CharField(max_length = 90, default = "Expectation")
     description = models.TextField(null=True,blank=True,default = 'description')
-    keywords = models.TextField(null=True,blank=True,default = '')
+    keyword =  models.CharField(max_length = 9000, default = "Expectation")
 
 class Marks (models.Model):
     MARKS = (('R', 'R'),  ('1-', '1-'), ('1/1-', '1/1-'), ('1', '1'), ('1/1+', '1/1+'), ('1+', '1+'), ('2-', '2-'), ('2/2-', '2/2-'), ('2', '2'), ('2/2+', '2/2+'), ('2+', '2+'), ('3-', '3-'), ('3/3-', '3/3-'), ('3', '3'), ('3/3+', '3/3+'), ('3+', '3+'), ('4-', '4-'), ('4/4-', '4/4-'), ('4', '4'), ('4/4+', '4/4+'), ('4+', '4+'))

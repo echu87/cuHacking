@@ -2,69 +2,97 @@
 {% load static %}
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'css/navigation.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+  <link href="{% static 'css/navigation.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
-  
-    <!-- Top Navigation Bar -->
-    <ul id='main' class="navigation">
-      <div class="wid">
-        <a href="/"><li class="navigation-item">Home</li></a>
-        <a href="/classroom"><li class="navigation-item">Classrooms</li></a>
-        {% if first_name %}
-        <a href="/logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
-        {% else %}
-        <a href="/login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
-        {% endif %}
-      </div>
-    </ul>
+<body>
 
-    <!-- Main Display -->
-    <div class="wrapper">
-
-      <div class="welcome">
-        {% if first_name %}
-        <div class="header">Hi {{ first_name }}, Welcome To Grader!</div>
-        {% else %}
-        <div class="header">Hi There, Sign In To Get Started...</div>
-        {% endif %}
-        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        {% if first_name %}
-        <a href="./logout"><div class="button">Sign Out</div></a>
-        {% else %}
-        <a href="./login"><div class="button">Sign In</div></a>
-        {% endif %}
-      </div>
-
-      {% if not first_name %}
-        <div class="welcome" style="margin-top: 20px">
-          <div class="header">How Do I Use Grader?</div>
-          <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-          <a href="./classroom"><div class="button">Get Started</div></a>
-        </div>
+  <!-- Top Navigation Bar -->
+  <ul id='main' class="navigation">
+    <div class="wid">
+      <a href="/">
+        <li class="navigation-item">Home</li>
+      </a>
+      <a href="/classroom">
+        <li class="navigation-item">Classrooms</li>
+      </a>
+      {% if first_name %}
+      <a href="/logout">
+        <li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li>
+      </a>
+      {% else %}
+      <a href="/login">
+        <li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li>
+      </a>
       {% endif %}
+    </div>
+  </ul>
 
+  <!-- Main Display -->
+  <div class="wrapper">
+
+    <div class="welcome">
+      {% if first_name %}
+      <div class="header">Hi {{ first_name }}, Welcome To Grader!</div>
+      {% else %}
+      <div class="header">Hi There, Sign In To Get Started...</div>
+      {% endif %}
+      <div class="description">gradeassist is a website that facilitates easier viewing and creation of tasks, building upon
+        the functionalities of sites such as Google Classroom and Schoology. It was designed with teachers and students
+        in mind with simplicity, ease-of-use and functionality being its cornerstones of development. Quite often, with
+        several classes per semester, it is easy for students to lose track of upcoming evaluations, work tasks and
+        marks and we hope to address these issues with gradeassist.
+          <br><br><br>
+        How do I use gradeassist?: Using gradeassist is quite simple: to begin, you can sign-in with Google which allows you to
+        create a classroom (if you are a teacher/professor or in a leadership position on a team, this is necessary).
+        After creating a classroom, you may invite students/peers to join (they will also be required to sign-in with
+        Google). Within a classroom, you may create tasks and provide keywords for the task (for example, cosine+law)
+        which will result in a link being displayed to a YouTube video should the student/individual require additional
+        learning. Members of a classroom may unenroll from the classroom, and the creator may delete the classroom (if
+        it is obsolete, outdated, etc.). In the future, our team hopes to have a spreadsheet where the student or
+        teacher can add and view marks, with notes and an expansive level system.</div>
+      {% if first_name %}
+      <a href="./logout">
+        <div class="button">Sign Out</div>
+      </a>
+      {% else %}
+      <a href="./login">
+        <div class="button">Sign In</div>
+      </a>
+      {% endif %}
     </div>
 
-  </body>
+    {% if not first_name %}
+    <div class="welcome" style="margin-top: 20px">
+      <div class="header">How Do I Use Grader?</div>
+      <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <a href="./classroom">
+        <div class="button">Get Started</div>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+
+</body>
 
 </html>

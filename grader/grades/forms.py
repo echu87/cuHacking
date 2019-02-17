@@ -13,7 +13,7 @@ class classroom_creating(forms.ModelForm):
 class Task_form(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = ['classroom']
+        exclude = ['classroom','keyword','']
 
 class Mark_form(forms.ModelForm):
     class Meta:

@@ -28,6 +28,7 @@
       <div class="wid">
         <a href="/"><li class="navigation-item">Home</li></a>
         <a href="/classroom"><li class="navigation-item">Classrooms</li></a>
+        <a href="/cstask/{{classroom.id}}"><li class="navigation-item">Create a Task</li></a>
         {% if first_name %}
         <a href="/logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
         {% else %}
@@ -38,12 +39,21 @@
 
     <!-- Main Display -->
     <div class="wrapper">
-      {{ editing }}
+    
       <div class="welcome">
         <div class="header">{{ classroom.subject }}</div>
         <div class="description">{{ classroom.name }} - {{ classroom.description }}</div>
-    </div>
+      </div>
+        {% for task in tasks %}
+        <div class="wrapper">
+            <div class="welcome">
+        <div class="header">{{ task.name }}</div>
+        <div class="description">{{ task.description }} <br> {{task.end_date}}</div>
+        <iframe src='{{task.keyword}}' frameborder="0"></iframe>
+      </div></div>
+        {%endfor%}
     
+
   </body>
 
 </html>
