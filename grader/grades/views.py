@@ -26,3 +26,12 @@ def classroom(request):
         return render(request,"projects/classroom.html",{'first_name':None})
     else:
         return render(request,"projects/classroom.html",{})
+
+def classroom_deletion(request, project_number):
+    project = get_object_or_404(classroom,id=project_number)
+    context =  {"classroom" : classroom}
+    if request.method == 'POST':
+        project.delete()
+        return redirect('/home')
+    else:
+        return render(request,'projects/delete_project.html',context)
