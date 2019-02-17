@@ -74,7 +74,7 @@
             <div class="class">
               <div class="subject">{{ class.subject }} ({{ class.code }})</div>
               <div class="desc">{{ class.description }}</div>
-              <div class="button g-button">Unenroll</div>
+              <a href="/unenroll/{{class.id}}"><div class="button g-button">Unenroll</div></a>
               <a href=""><div class="button">View Class</div></a>
             </div>
           {% endfor %}
