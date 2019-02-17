@@ -6,5 +6,5 @@ from . import views
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('classroom', views.classroom, name='classroom'),
-    path('cclass', views.classroom_create, name='classroom_create'),
+    path('classroom/<int:project_number>', views.classroom, name='classroom'),
 ]

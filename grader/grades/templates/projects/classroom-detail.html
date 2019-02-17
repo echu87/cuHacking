@@ -39,65 +39,13 @@
     <!-- Main Display -->
     <div class="wrapper">
 
-      {% if first_name %}
       <div class="welcome">
-        <div class="header">Create A New Classroom Or Join An Existing Classroom...</div>
+        <div class="header">Classroom...</div>
         <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
           commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        <!-- <a href="./cclass"><div class="button button-ext">Create a Classroom</div></a> -->
-        <a class="button button-ext modal-trigger" href="#demo-modal-custom">Create a Classroom</a>
-        <a href=""><div class="button button-ext">Join a Classroom</div></a>
       </div>
-      <div class="grid-container">
-        <div class="info">
-          <div class="header">Created Classes</div>
-          {% if createdClassesLen == 0 %}
-            <div class="description">You have not created any classes.</div>
-          {% endif %}
-          {% for class in createdClasses %}
-            <div class="class">
-              <div class="subject">{{ class.subject }} ({{ class.code }})</div>
-              <div class="desc">{{ class.description }}</div>
-              <div class="button g-button">Delete Class</div>
-              <a href="classroom-detail.html"><div class="button">View Class</div></a>
-            </div>
-          {% endfor %}
-        </div>
-        <div class="info">
-          <div class="header">Joined Classes</div>
-        </div>
-      </div>
-      {% else %}
-      <div class="welcome">
-        <div class="header">You Must Be Signed In To Access Classrooms...</div>
-        <div class="description">Sign in by clicking the sign in button in the top navigation bar.</div>
-      </div>
-      {% endif %}
-      
-    </div>
-
-    <!-- Modal Structure -->
-    <div id="demo-modal-custom" class="modal">
-      <div class="modal-content">
-        <form method="post">
-          {% csrf_token %}
-          {{ cform }}
-          <input type="submit" value="Save" class="modal-button">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <a href="" class="modal-button-gray">Cancel</a>
-      </div>
-    </div>
-    <script>
-      $(document).ready(function(){
-        $('.modal').modal({
-          dismissible: false
-        })
-      })
-    </script>
 
   </body>
 

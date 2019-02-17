@@ -17,14 +17,6 @@ def homepage(request):
         return render(request,"projects/main.html",{'first_name':None})
 
 def classroom(request):
-    if request.user.is_authenticated:
-        filtered = Classroom.objects.filter(teacherEmail=request.user.email)
-        print (filtered)
-        return render(request,"projects/classroom.html",{'first_name':request.user.first_name,'createdClasses':filtered})
-    else:
-        return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[]})
-
-def classroom_create(request):
     if request.method == 'POST' and request.user.is_authenticated:
         cform = classroom_creating(request.POST)
         if cform.is_valid():
@@ -35,7 +27,16 @@ def classroom_create(request):
             return redirect('/classroom')
     else:
         cform = classroom_creating()
-    return render(request,'projects/classroom_create.html',{"cform" : cform}) 
+
+    if request.user.is_authenticated:
+        filtered = Classroom.objects.filter(teacherEmail=request.user.email)
+        return render(request,"projects/classroom.html",{'first_name':request.user.first_name,'createdClasses':filtered,'createdClassesLen':len(filtered),"cform":cform})
+    else:
+        return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[],'createdClassesLen':0,"cform":cform})
+
+def classroom_delete(code):
+    Classroom.objects.get(code=code.delete).delete()
+    
 
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
