@@ -7,4 +7,4 @@ from django import forms
 class classroom_creating(forms.ModelForm):
     class Meta:
         model = Classroom
-        exclude = ['humans']
+        exclude = ['code','teacherEmail']
