@@ -8,11 +8,16 @@ from django.dispatch import receiver
 # Create your models here.
 class Classroom(models.Model):
     name = models.CharField(max_length = 90, default = "class name")
-    subject = models.CharField(max_length = 90, default = "class name")
+    subject = models.CharField(max_length = 90, default = "class")
+    users = models.CharField(max_length = 90, default= "Johny Appleseed")
+    owner = models.CharField(max_length = 90, default = "owner")
 
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")
     classroom = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null = True)
     description = models.TextField(null=True,blank=True,default = 'description')
     due_date = models.DateField()
+
+# class ClassMembers(models.Model):
+#     classroom = models.ForeignKey(Classroom, on_delete = models.SET_NULL, null = True)
     

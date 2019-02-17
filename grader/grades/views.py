@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import Classroom, Task
-from grades.forms import classroom_creating
+from grades.forms import classroom_create
 
 from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
@@ -11,10 +11,11 @@ def homepage(request):
 
 def classroom_create(request):
     if request.method == 'POST':
-        cform = classroom_creating(request.POST)
+        cform = classroom_create(request.POST)
         if cform.is_valid():
-            new_Classroom = cform.save(commit = False)
-            new_Classroom.save()
+            new_ classroom = cform.save(commit = False)
+            new_classroom.owner = request.user
+            new_classroom.save()
             return redirect('/main')
     else:
         cform = classroom_creating()
