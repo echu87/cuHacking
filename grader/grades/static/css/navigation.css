@@ -13,13 +13,13 @@
     display: block;
     text-align: center;
     float: left;
-    margin: 14px 16px;
+    margin: 14px 5px;
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
 }
 .navigation-item:hover:not(.nav-auth-status) {
-    background: rgb(228, 228, 228);
+    text-decoration: underline;
 }
 .nav-auth-status {
     float: right;
