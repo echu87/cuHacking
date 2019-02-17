@@ -7,7 +7,7 @@ import random
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import classroom_creating
+from .forms import classroom_creating,Mark_form,Task_form
 
 # Create your views here.
 def homepage(request):
@@ -77,3 +77,25 @@ def enroll_class(request,class_id):
 #         return render(request,'projects/join_class.html',{'msg': ""}) 
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
+
+
+# def mark(request,class_id,task_id):
+#     context = {'task': Task.objects.get(id = task_id), 'students': Classroom.objects.get(id = class_id).students.all()}
+#     if request.method == 'POST':
+#         form = Mark_form(request.POST)
+#         return render(request,'projects/mark.html', context)
+#     else:
+#         return render(request,'projects/mark.html', context)
+
+def create_task(request,class_id):
+    if request.method == 'POST':
+        tsform = Task_form(request.POST)
+        if tsform.is_valid():
+            new_Classroom = tsform.save(commit = False)
+            new_Classroom.classroom = Classroom.objects.get(id = class_id)
+            new_Classroom.save()
+            return redirect('/classroom/'+str(class_id))
+    else:
+        tsform = classroom_creating()
+    return render(request,'projects/ctask.html', {'form':tsform})
+
