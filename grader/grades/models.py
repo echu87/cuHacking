@@ -20,3 +20,6 @@ class Classroom(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length = 90, default = "task name")
     classroom = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null = True)
+    end_date = models.DateField(null=True,blank=True)
+    description = models.TextField(null=True,blank=True,default = 'description')
+    keywords = models.TextField(null=True,blank=True,default = '')
