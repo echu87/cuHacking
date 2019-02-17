@@ -115,3 +115,11 @@ a {
 .modal {
     border-radius: 5px;
 }
+.icon {
+    background: #EfEfEf;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    padding: 3px;
+    cursor: pointer;
+}

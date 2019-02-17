@@ -47,11 +47,11 @@ def classroom(request):
         return render(request,"projects/classroom.html",{'first_name':None,'createdClasses':[],'createdClassesLen':0,'followedClasses':[],'followedClassesLen':0,"cform":cform})
 
 def classroom_detail(request, project_number):
-    context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number))}
-    return render(request,'projects/classroom_detail.html',context) 
-
-def generateClassID():
-    return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
+    editing = False
+    if Classroom.objects.filter(id = project_number).get(owner = request.user.email):
+        editing = True
+    context = {'classroom' : Classroom.objects.get(id = project_number),'tasks': Task.objects.filter(classroom = Classroom.objects.get(id = project_number)), 'editing':editing}
+    return render(request,'projects/classroom_detail.html', context) 
 
 def delete_class(request,class_id):
     Classroom.objects.get(id = class_id).delete()
@@ -75,3 +75,5 @@ def enroll_class(request,class_id):
 #         return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
 #     else:
 #         return render(request,'projects/join_class.html',{'msg': ""}) 
+def generateClassID():
+    return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
