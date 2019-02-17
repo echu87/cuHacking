@@ -57,5 +57,23 @@ def delete_class(request,class_id):
     Classroom.objects.get(id = class_id).delete()
     return redirect('/classroom')
 
+
+def enroll_class(request,class_id):
+    Classroom.objects.get(id = class_id).students.remove(request.user)
+    return redirect('/classroom')
+
+
+# @login_required
+# def join_class(request):
+#     if request.method == 'POST':
+#         for classroom in Classroom.objects.order_by('code'):
+#             if request.POST.getlist('code')[0] == classroom.code:
+#                 newclass = classroom
+#                 newclass.students.add(request.user)
+#                 newclass.save()
+#                 return render(request,'projects/join_class.html',{'msg': "You made it!"})                
+#         return render(request,'projects/join_class.html',{'msg': request.POST.getlist('code')[0]})
+#     else:
+#         return render(request,'projects/join_class.html',{'msg': ""}) 
 def generateClassID():
     return ''.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(8))
