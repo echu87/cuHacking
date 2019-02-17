@@ -26,12 +26,12 @@
     <!-- Top Navigation Bar -->
     <ul id='main' class="navigation">
       <div class="wid">
-        <a href="./"><li class="navigation-item">Home</li></a>
-        <a href="./classroom"><li class="navigation-item">Classrooms</li></a>
+        <a href="/"><li class="navigation-item">Home</li></a>
+        <a href="/classroom"><li class="navigation-item">Classrooms</li></a>
         {% if first_name %}
-        <a href="./logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
+        <a href="/logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
         {% else %}
-        <a href="./login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
+        <a href="/login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
         {% endif %}
       </div>
     </ul>
@@ -74,7 +74,7 @@
             <div class="class">
               <div class="subject">{{ class.subject }} ({{ class.code }})</div>
               <div class="desc">{{ class.description }}</div>
-              <div class="button g-button">Delete Class</div>
+              <div class="button g-button">Unenroll</div>
               <a href=""><div class="button">View Class</div></a>
             </div>
           {% endfor %}
@@ -113,7 +113,7 @@
     <!-- Modal Structure -->
     <div id="demo-modal-custom-join" class="modal">
       <div class="modal-content">
-        <form method="post">
+        <form title="Test" method="post">
           {% csrf_token %}
           <input type="text" value="Enter Code Here..." name="code">
           <input type="submit" value="Save" class="modal-button">

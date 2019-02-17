@@ -26,26 +26,22 @@
     <!-- Top Navigation Bar -->
     <ul id='main' class="navigation">
       <div class="wid">
-        <a href="./"><li class="navigation-item">Home</li></a>
-        <a href="./classroom"><li class="navigation-item">Classrooms</li></a>
+        <a href="/"><li class="navigation-item">Home</li></a>
+        <a href="/classroom"><li class="navigation-item">Classrooms</li></a>
         {% if first_name %}
-        <a href="./logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
+        <a href="/logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
         {% else %}
-        <a href="./login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
+        <a href="/login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
         {% endif %}
       </div>
     </ul>
 
     <!-- Main Display -->
     <div class="wrapper">
-
       <div class="welcome">
-        <div class="header">Classroom...</div>
-        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-      </div>
+        <div class="header">{{ classroom.subject }} ({{ classroom.code }})</div>
+        <div class="description">{{ classroom.name }} - {{ classroom.description }}</div>
+    </div>
 
   </body>
 

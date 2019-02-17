@@ -22,12 +22,12 @@
     <!-- Top Navigation Bar -->
     <ul id='main' class="navigation">
       <div class="wid">
-        <a href="./"><li class="navigation-item">Home</li></a>
-        <a href="./classroom"><li class="navigation-item">Classrooms</li></a>
+        <a href="/"><li class="navigation-item">Home</li></a>
+        <a href="/classroom"><li class="navigation-item">Classrooms</li></a>
         {% if first_name %}
-        <a href="./logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
+        <a href="/logout"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign Out</li></a>
         {% else %}
-        <a href="./login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
+        <a href="/login"><li class="navigation-item nav-auth-status" style="margin-right: 20px">Sign In</li></a>
         {% endif %}
       </div>
     </ul>
