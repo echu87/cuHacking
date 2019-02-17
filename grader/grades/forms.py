@@ -8,6 +8,12 @@ class classroom_create(forms.ModelForm):
     class Meta:
         model = Classroom
         exclude = ['owner', 'users']
+
+class task_create(forms.ModelForm):
+    class Meta:
+        model = Task
+
+
 class classroom_join(forms.ModelForm):
     class Meta:
         model = Classroom
