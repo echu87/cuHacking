@@ -22,6 +22,7 @@
     font-weight: 400;
 }
 .button, .nav-auth-status {
+    display: inline-block;
     color: white;
     background: #0D6DEB;
     border-radius: 5px;
@@ -32,7 +33,7 @@
 }
 .info {
     padding: 20px;
-    height: 400px;
+    height: 300px;
     border-radius: 5px;
     background: white;
 }
@@ -41,6 +42,12 @@
     grid-template-columns: repeat(2, 490px);
     grid-gap: 20px;
     margin-top: 20px;
+}
+@media only screen and (max-width: 1040px) {
+    .grid-container {
+        grid-template-columns: repeat(1, auto);
+        width: auto;
+    }
 }
 a {
     text-decoration: none;
