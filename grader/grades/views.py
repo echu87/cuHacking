@@ -91,11 +91,11 @@ def create_task(request,class_id):
     if request.method == 'POST':
         tsform = Task_form(request.POST)
         if tsform.is_valid():
-            new_Classroom = tsform.save(commit = False)
-            new_Classroom.classroom = Classroom.objects.get(id = class_id)
-            new_Classroom.save()
+            new_task = tsform.save(commit = False)
+            new_task.classroom = Classroom.objects.get(id = class_id)
+            new_task.save()
             return redirect('/classroom/'+str(class_id))
     else:
-        tsform = classroom_creating()
-    return render(request,'projects/ctask.html', {'form':tsform})
+        tsform = Task_form()
+    return render(request,'projects/ctask.html', {'forom':tsform})
 
